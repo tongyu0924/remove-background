@@ -20,6 +20,7 @@ resnet or others
 
 #### 原圖: 
 來源 : https://reurl.cc/qLNeE0
+
 ![image](https://github.com/tongyu0924/remove-background/assets/119610311/f0337365-f667-4684-8c47-0adb35809161)
 
 #### 去背結果:
