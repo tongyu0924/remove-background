@@ -1,6 +1,7 @@
 # remove-background
-#### paper : https://arxiv.org/abs/1706.05587
 ### DeepLabV3 model:
+#### paper : https://arxiv.org/abs/1706.05587
+
 #### Backbone :
 resnet or others 
 
