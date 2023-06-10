@@ -6,9 +6,9 @@
 resnet or others 
 
 #### Atrous Convolution : 
-![image](https://github.com/tongyu0924/remove-background/assets/119610311/702c2874-690c-4d19-939c-bedea061a639)
+![image](https://github.com/tongyu0924/remove-background/assets/119610311/3e653b1c-c4fc-4d12-a63a-89e7f7c47892)
 
-![image](https://github.com/tongyu0924/remove-background/assets/119610311/d5ed0768-62fe-4f75-a0d8-1cff11cec522)
+![image](https://github.com/tongyu0924/remove-background/assets/119610311/702c2874-690c-4d19-939c-bedea061a639)
 
 
 #### Atrous Spatial Pyramid Pooling (ASPP): 
