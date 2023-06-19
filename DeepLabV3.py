@@ -3,7 +3,6 @@ import torch.nn as nn
 import torchvision.transforms as transforms
 import cv2
 import matplotlib.pyplot as plt
-import segmentation_models_pytorch as smp
 import torchvision
 import torchvision.models as models
 from PIL import Image
