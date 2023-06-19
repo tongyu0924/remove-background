@@ -3,13 +3,16 @@ import torch.nn as nn
 import torchvision.transforms as transforms
 import cv2
 import matplotlib.pyplot as plt
+import segmentation_models_pytorch as smp
+import torchvision
+import torchvision.models as models
 from PIL import Image
 import numpy as np
 
 model = torch.hub.load('pytorch/vision:v0.10.0', 'deeplabv3_resnet101', pretrained=True)
 model.eval()
 
-input_image = Image.open("C:/Users/user/Downloads/kouki.jpg")
+input_image = Image.open('kouki.jpg')
 input_image = input_image.convert("RGB")
 preprocess = transforms.Compose([
     transforms.ToTensor(),
@@ -23,14 +26,20 @@ with torch.no_grad():
     output = model(input_batch)['out'][0]
 output_predictions = output.argmax(0)
 
-output_predictions_np = output_predictions.numpy().astype(np.float32)  # 將 PyTorch 張量轉換為 NumPy 數組
-output_predictions_np = cv2.resize(output_predictions_np, (input_image.width, input_image.height))  # 調整預測結果的尺寸
+segmentation_mask = output_predictions.detach().cpu().numpy()
 
-output_predictions_np = (output_predictions_np * 255).astype(np.uint8)
+alpha_channel = np.zeros_like(segmentation_mask, dtype=np.uint8)
+alpha_channel[segmentation_mask != 0] = 255
 
-input_np = np.array(input_image)
-output_segmented = cv2.bitwise_and(input_np, input_np, mask=output_predictions_np)
+input_image_np = np.array(input_image)
+output_image_pil = Image.fromarray(input_image_np).convert("RGBA")
+alpha_channel = np.zeros_like(segmentation_mask, dtype=np.uint8)
+alpha_channel[segmentation_mask != 0] = 255
 
-plt.imshow(output_segmented)
+output_image_pil.putalpha(Image.fromarray(alpha_channel))
+
+plt.imshow(output_image_pil)
 plt.axis('off')
 plt.show()
+
+output_image_pil.save('output.png')
